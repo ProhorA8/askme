@@ -6,18 +6,18 @@ class User < ApplicationRecord
   DIGEST = OpenSSL::Digest::SHA256.new
   has_many :questions
 
-  validates :username, :email, presence: true
-  validates :username, :email, uniqueness: true
+  validates :username, :email, presence: true, uniqueness: true
+  validates :username, length: { maximum: 40 }, format: { with: /\A\w+\z/ }
+  validates :email, format: { with: URI::MailTo::EMAIL_REGEXP, message: "wrong format" }
 
   attr_accessor :password
 
-  # валидация будет проходить только при создании нового юзера
   validates :password, presence: true, on: :create
 
-  # поле подтверждения пароля
-  validates_confirmation_of :password
-
   before_save :encrypt_password
+  before_save :downcase_username
+
+  private
 
   def encrypt_password
     if password.present?
@@ -53,5 +53,9 @@ class User < ApplicationRecord
     return user if user.password_hash == hashed_password
 
     nil
+  end
+
+  def downcase_username
+    username&.downcase!
   end
 end
