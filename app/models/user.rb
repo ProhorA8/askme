@@ -10,7 +10,7 @@ class User < ApplicationRecord
   has_many :questions
 
   before_save :encrypt_password
-  before_save :downcase_username
+  before_save :downcase_params
 
   validates :username, :email, presence: true, uniqueness: true
   validates :username, length: { maximum: 40 }, format: { with: USERNAME_REGEXP }
@@ -19,7 +19,7 @@ class User < ApplicationRecord
 
   def self.authenticate(email, password)
     # находим кандидата по email
-    user = find_by(email: email)
+    user = find_by(email: email&.downcase)
 
     # Если пользователь не найден, возвращает nil
     return nil unless user.present?
@@ -38,8 +38,9 @@ class User < ApplicationRecord
     password_hash.unpack('H*')[0]
   end
 
-  def downcase_username
+  def downcase_params
     username&.downcase!
+    email&.downcase!
   end
 
   private
