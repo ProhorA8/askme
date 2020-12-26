@@ -38,12 +38,12 @@ class User < ApplicationRecord
     password_hash.unpack('H*')[0]
   end
 
+  private
+
   def downcase_params
     username&.downcase!
     email&.downcase!
   end
-
-  private
 
   def encrypt_password
     if password.present?
