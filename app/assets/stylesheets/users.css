@@ -32,6 +32,10 @@
   max-height: 100%;
 }
 
+.user-image-home {
+  min-width: 100%;
+}
+
 .user-details {
   padding: 10px 0;
   background: white;
