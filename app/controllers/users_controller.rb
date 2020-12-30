@@ -24,9 +24,13 @@ class UsersController < ApplicationController
     )
 
     @questions = [
-      Question.new(text: 'Как дела?', created_at: Date.parse('27.03.2021')),
-      Question.new(text: 'Отлично!', created_at: Date.parse('27.03.2021'))
+      Question.new(text: 'Как дела?', answer: 'хорошо!', created_at: Date.parse('27.03.2021')),
+      Question.new(text: 'Что нового?', created_at: Date.parse('27.03.2021'))
     ]
+
+    @questions_count = @questions.count
+    @answers_count = @questions.map(&:answer).count
+    @unanswered_count = @questions_count - @answers_count
 
     @new_question = Question.new
   end
