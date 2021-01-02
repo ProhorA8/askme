@@ -46,5 +46,12 @@
         <%= f.submit 'Сохранить', class: 'button button-dark button-small' %>
       </div>
     <% end %>
+    <div class="buffer-top">
+      <h2><%= t('app.headers.delete_profile') %></h2>
+      <div class="buffer-both">
+        <%= link_to t('links.delete_profile'), @user, class: 'button button-danger button-small', method: :delete,
+                    data: {confirm: t('app.questions.are_you_sure')} if current_user == @user %>
+      </div>
+    </div>
   </div>
 </div>
