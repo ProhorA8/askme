@@ -16,14 +16,12 @@ class User < ApplicationRecord
   validates :username, length: { maximum: 40 }, format: { with: USERNAME_REGEXP }
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, presence: true, on: :create
+  validates_confirmation_of :password
 
   def self.authenticate(email, password)
-    # находим кандидата по email
     user = find_by(email: email&.downcase)
 
-    # Если пользователь не найден, возвращает nil
     return nil unless user.present?
-    # Формируем хэш пароля из того, что передали в метод
     hashed_password = User.hash_to_string(OpenSSL::PKCS5.pbkdf2_hmac(password,
                                                                      user.password_salt,
                                                                      ITERATIONS,

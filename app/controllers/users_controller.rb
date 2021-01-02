@@ -1,37 +1,58 @@
 class UsersController < ApplicationController
+  before_action :load_user, except: [:index, :create, :new]
+  before_action :authorize_user, except: [:index, :new, :create, :show]
+
   def index
-    @users = [
-      User.new(
-        id: 1,
-        name: 'Evgen',
-        username: 'prohor',
-        avatar_url: 'https://s.gravatar.com/avatar/b2330e4aa6e1f119b95b635ff53384c8?s=80'),
-      User.new(id: 2, name: 'Prometheus', username: 'prome')
-    ]
+    @users = User.all
   end
 
   def new
+    redirect_to root_url, alert: 'Вы уже залогинены' if current_user.present?
+
+    @user = User.new
+  end
+
+  def create
+    redirect_to root_url, alert: 'Вы уже залогинены' if current_user.present?
+
+    @user = User.new(user_params)
+
+    if @user.save
+      redirect_to root_url, notice: 'Пользователь успешно зарегистрирован!'
+    else
+      render :new
+    end
   end
 
   def edit
   end
 
+  def update
+    if @user.update(user_params)
+      redirect_to user_path(@user), notice: 'Данные обновлены'
+    else
+      render :edit
+    end
+  end
+
   def show
-    @user = User.new(
-      name: 'Evgen',
-      username: 'ProhorA8',
-      avatar_url: 'https://s.gravatar.com/avatar/b2330e4aa6e1f119b95b635ff53384c8?s=80'
-    )
+    @questions = @user.questions.order(created_at: :desc)
 
-    @questions = [
-      Question.new(text: 'Как дела?', answer: 'хорошо!', created_at: Date.parse('27.03.2021')),
-      Question.new(text: 'Что нового?', created_at: Date.parse('27.03.2021'))
-    ]
+    @new_question = @user.questions.build
+  end
 
-    @questions_count = @questions.count
-    @answers_count = @questions.map(&:answer).count
-    @unanswered_count = @questions_count - @answers_count
+  private
 
-    @new_question = Question.new
+  def authorize_user
+    reject_user unless @user == current_user
+  end
+
+  def load_user
+    @user ||= User.find params[:id]
+  end
+
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation,
+                                 :name, :username, :avatar_url)
   end
 end
