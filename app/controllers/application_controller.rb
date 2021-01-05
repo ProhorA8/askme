@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   end
 
   def reject_user
-    redirect_to root_path, alert: 'Действие запрещено!'
+    redirect_to root_path, alert: I18n.t('controllers.application.no_access')
   end
 end

@@ -1,13 +1,75 @@
 ru:
+  controllers:
+    application:
+      no_access: 'Действие запрещено!'
+    questions:
+      asked: 'Вопрос задан!'
+      saved: 'Вопрос сохранен!'
+      destroyed: 'Вопрос удален!'
+    sessions:
+      success: 'Вы успешно вошли!'
+      incorrect: 'Неправильный email или пароль'
+      log_off: 'Выход выполнен!'
+    users:
+      already_log_in: 'Вход уже выполнен'
+      saved: 'Пользователь сохранен!'
+      updated: 'Данные обновлены!'
+      destroyed: 'Ваш профиль удалён!'
+
+  app:
+    name: 'Хорошие вопросы!'
+    questions:
+      are_you_sure: 'Вы уверены?'
+    headers:
+      change_profile: 'Править профиль'
+      our_users: 'Наши пользователи'
+      join_us: 'Присоединяйся к нам'
+      list_of_questions_for_a_hashtag: 'Список вопросов для тэга #%{name}'
+      delete_profile: 'Удаление профиля'
+      questions:
+        are_you_sure: 'Вы уверены?'
+
+  links:
+    register: 'Зарегистрироваться'
+    sign_in: 'Войти'
+    log_off: 'Выйти'
+    saved: 'Сохранить'
+    to_return: 'Вернуться'
+    delete_profile: 'Удалить профиль?'
+
+  views:
+    questions:
+      question: 'Вопрос'
+      answer: 'Ответ'
+    sessions:
+      login: 'Логин (email)'
+      password: 'Пароль'
+    users:
+      your_name: 'Ваше имя'
+      login: 'Логин (email)'
+      your_avatar_url: 'URL вашей аватарки'
+      bg_color: 'Цвет фона'
+      nickname: 'Никнейм'
+      name: 'Имя'
+      password: 'Пароль'
+      password_confirmation: 'Пароль еще раз!'
+      dont_change_your_password: 'Если не хотите менять пароль — оставьте эти поля пустыми!'
+
   question:
-    one: вопрос
-    few: вопроса
-    other: вопросов
+    zero: 'нет вопросов'
+    one: 'вопрос'
+    few: 'вопроса'
+    many: 'вопросов'
+    other: 'вопросов'
   answer:
-    one: ответ
-    few: ответа
-    other: ответов
+    zero: 'нет ответов'
+    one: 'ответ'
+    few: 'ответа'
+    many: 'ответов'
+    other: 'ответов'
   unanswered:
-    one: безответный
-    few: безответных
-    other: безответных
+    zero: 'безответных'
+    one: 'безответный'
+    few: 'безответных'
+    many: 'безответных'
+    other: 'безответных'
