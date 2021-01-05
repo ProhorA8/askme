@@ -4,6 +4,7 @@ class User < ApplicationRecord
   ITERATIONS = 20_000
   DIGEST = OpenSSL::Digest::SHA256.new
   USERNAME_REGEXP = /\A\w+\z/
+  VALID_COLOR_REGEX = /\A#(?:[0-9a-fA-F]{3}){1,2}\z/
 
   attr_accessor :password
 
@@ -17,6 +18,7 @@ class User < ApplicationRecord
   validates :email, format: { with: URI::MailTo::EMAIL_REGEXP }
   validates :password, presence: true, on: :create
   validates_confirmation_of :password
+  validates :color, format: {with: VALID_COLOR_REGEX}
 
   def self.authenticate(email, password)
     user = find_by(email: email&.downcase)
