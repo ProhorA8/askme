@@ -1,4 +1,11 @@
 ru:
+  activerecord:
+    attributes:
+      user:
+        avatar_url: 'URL вашей аватарки'
+        color: 'Цвет фона'
+        name: 'Ваше имя'
+
   controllers:
     application:
       no_access: 'Действие запрещено!'
@@ -35,7 +42,7 @@ ru:
     log_off: 'Выйти'
     saved: 'Сохранить'
     to_return: 'Вернуться'
-    delete_profile: 'Удалить профиль?'
+    delete_profile: 'Удалить профиль'
 
   views:
     questions:
@@ -45,10 +52,7 @@ ru:
       login: 'Логин (email)'
       password: 'Пароль'
     users:
-      your_name: 'Ваше имя'
       login: 'Логин (email)'
-      your_avatar_url: 'URL вашей аватарки'
-      bg_color: 'Цвет фона'
       nickname: 'Никнейм'
       name: 'Имя'
       password: 'Пароль'

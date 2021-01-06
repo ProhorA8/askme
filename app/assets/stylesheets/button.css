@@ -14,6 +14,11 @@
   color: #fff;
 }
 
+.button-danger {
+  background: red;
+  color: #fff;
+}
+
 .button-green {
   background: #005a55;
   color: #fff;
