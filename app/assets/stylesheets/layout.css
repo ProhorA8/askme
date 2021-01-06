@@ -42,3 +42,10 @@ a {
   font-size: 20px;
   color: #dc554f;
 }
+
+.hashtags-cloud {
+  padding-top: 20px;
+  min-height: 80px;
+  width: 650px;
+  margin: auto;
+}

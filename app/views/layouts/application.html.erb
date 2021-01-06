@@ -21,7 +21,7 @@
     <div class="header-nav">
       <% if current_user %>
         <%= link_to "@#{current_user.username}", user_path(current_user) %> |
-        <%= link_to t('links.log_off'), log_out_path %>
+        <%= link_to t('links.log_off'), log_out_path, data: { method: :delete }%>
       <% else %>
         <%= link_to t('links.register'), sign_up_path, class: 'button button-light button-small' %>
         <%= link_to t('links.sign_in'), log_in_path, class: 'button button-light button-small' %>
@@ -39,7 +39,6 @@
         <% end %>
       </div>
     <% end %>
-
     <%= yield %>
   </div>
 </div>

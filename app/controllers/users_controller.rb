@@ -4,22 +4,23 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    @tags = Tag.with_questions
   end
 
   def new
-    redirect_to root_url, alert: I18n.t('controllers.users.already_log_in') if current_user.present?
+    redirect_to root_path, alert: I18n.t('controllers.users.already_log_in') if current_user.present?
 
     @user = User.new
   end
 
   def create
-    redirect_to root_url, alert: I18n.t('controllers.users.already_log_in') if current_user.present?
+    redirect_to root_path, alert: I18n.t('controllers.users.already_log_in') if current_user.present?
 
     @user = User.new(user_params)
 
     if @user.save
       session[:user_id] = @user.id
-      redirect_to root_url, notice: I18n.t('controllers.users.saved')
+      redirect_to root_path, notice: I18n.t('controllers.users.saved')
     else
       render :new
     end
@@ -48,7 +49,6 @@ class UsersController < ApplicationController
 
   def destroy
     @user.destroy
-
     redirect_to root_path, notice: I18n.t('controllers.users.destroyed')
   end
 
