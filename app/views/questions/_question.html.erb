@@ -1,3 +1,5 @@
+<% author = question.author %>
+
 <div class="question">
   <div class="question-content">
     <div class="question-text text-lead">
@@ -11,9 +13,9 @@
     <% end %>
 
     <div class="question-date">
-      <% if question.author.present? %>
+      <% if author.present? %>
         <div class="question-text text-author">
-          <%= link_to "@#{question.author.username}", user_path(question.author) %>
+          <%= link_to "@#{author.username}", user_path(author) %>
         </div>
       <% else %>
         <span><i>Аноним</i></span>
