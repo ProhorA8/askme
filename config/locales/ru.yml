@@ -54,6 +54,9 @@ ru:
     users:
       login: 'Логин (email)'
       nickname: 'Никнейм'
+      your_name: 'Ваше имя'
+      bg_color: 'Цвет фона'
+      your_avatar_url: 'URL вашей аватарки'
       name: 'Имя'
       password: 'Пароль'
       password_confirmation: 'Пароль еще раз!'
