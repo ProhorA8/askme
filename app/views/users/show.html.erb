@@ -4,7 +4,7 @@
   </h1>
 
   <div class="buffer-both">
-    <%= link_to 'Редактировать профиль', edit_user_path(@user) if current_user == @user %>
+    <%= link_to t('app.headers.change_profile'), edit_user_path(@user) if current_user == @user %>
   </div>
 
   <div class="user-image-div">
@@ -31,7 +31,7 @@
   </div>
 
   <div class="user-ask-button container text-center">
-    <%= link_to "Спроси меня", '', class: 'button button-light', id: 'ask-button' %>
+    <%= link_to t('views.users.ask_me'), '', class: 'button button-light', id: 'ask-button' %>
   </div>
 </div>
 
@@ -42,12 +42,12 @@
         <%= f.hidden_field :user_id %>
 
         <div class="form-field">
-          <%= f.label "Ваш вопрос для @#{@user.username}", class: 'form-label' %>
+          <%= f.label "#{t('views.users.your_question_for')} @#{@user.username}", class: 'form-label' %>
           <%= f.text_area :text, class: 'form-textarea' %>
         </div>
 
         <div class="form-action">
-          <%= submit_tag 'Задать вопрос', class: 'button button-small button-dark' %>
+          <%= submit_tag t('views.users.ask_a_question'), class: 'button button-small button-dark' %>
         </div>
       <% end %>
     </div>

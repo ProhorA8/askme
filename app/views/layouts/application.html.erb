@@ -3,10 +3,12 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Хорошие вопросы</title>
+  <title><%= t('app.name') %></title>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+
   <%= stylesheet_link_tag 'application', media: 'all' %>
   <%= javascript_pack_tag 'application' %>
+
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
 </head>
@@ -21,10 +23,10 @@
     <div class="header-nav">
       <% if current_user %>
         <%= link_to "@#{current_user.username}", user_path(current_user) %> |
-        <%= link_to t('links.log_off'), log_out_path, data: { method: :delete }%>
-      <% else %>
-        <%= link_to t('links.register'), sign_up_path, class: 'button button-light button-small' %>
-        <%= link_to t('links.sign_in'), log_in_path, class: 'button button-light button-small' %>
+        <%= link_to t('links.log_off'), session_path, data: { method: :delete }%>
+      <% else %>t
+        <%= link_to t('links.register'), new_user_path, class: 'button button-light button-small' %>
+        <%= link_to t('links.sign_in'), new_session_path, class: 'button button-light button-small' %>
       <% end %>
     </div>
   </div>

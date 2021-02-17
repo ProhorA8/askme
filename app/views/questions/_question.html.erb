@@ -18,7 +18,7 @@
           <%= link_to "@#{author.username}", user_path(author) %>
         </div>
       <% else %>
-        <span><i>Аноним</i></span>
+        <span><i><%= t('views.questions.anonymous') %></i></span>
       <% end %>
       <%= l(question.created_at, format: :short) %>
     </div>
@@ -34,7 +34,7 @@
     <div class="question-actions">
       <%= link_to fa_icon(edit_icon), edit_question_path(question) %>
       <%= link_to fa_icon('trash-o'), question_path(question),
-                  method: :delete, data: {confirm: t('app.questions.are_you_sure')} %>
+                  method: :delete, data: {confirm: t('views.questions.are_you_sure')} %>
     </div>
   <% end %>
 </div>

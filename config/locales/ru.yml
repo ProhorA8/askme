@@ -25,10 +25,8 @@ ru:
 
   app:
     name: 'Хорошие вопросы!'
-    questions:
-      are_you_sure: 'Вы уверены?'
     headers:
-      change_profile: 'Править профиль'
+      change_profile: 'Редактировать профиль'
       our_users: 'Наши пользователи'
       join_us: 'Присоединяйся к нам'
       list_of_questions_for_a_hashtag: 'Список вопросов для тэга #%{name}'
@@ -46,9 +44,12 @@ ru:
 
   views:
     questions:
+      anonymous: 'Аноним'
+      are_you_sure: 'Вы уверены?'
       question: 'Вопрос'
       answer: 'Ответ'
     sessions:
+      login_to_site: 'Войти на сайт'
       login: 'Логин (email)'
       password: 'Пароль'
     users:
@@ -61,6 +62,9 @@ ru:
       password: 'Пароль'
       password_confirmation: 'Пароль еще раз!'
       dont_change_your_password: 'Если не хотите менять пароль — оставьте эти поля пустыми!'
+      ask_me: 'Спроси меня'
+      ask_a_question: 'Задать вопрос'
+      your_question_for: 'Ваш вопрос для'
 
   question:
     zero: 'нет вопросов'
