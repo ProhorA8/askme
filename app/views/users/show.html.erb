@@ -46,6 +46,9 @@
           <%= f.text_area :text, class: 'form-textarea' %>
         </div>
 
+        <%# Хелпер капчи %>
+        <%= recaptcha_tags size: 'compact' unless current_user.present? %>
+
         <div class="form-action">
           <%= submit_tag t('views.users.ask_a_question'), class: 'button button-small button-dark' %>
         </div>

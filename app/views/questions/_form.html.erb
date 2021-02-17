@@ -25,6 +25,9 @@
       </div>
     <% end %>
 
+    <%# Хелпер капчи %>
+    <%= recaptcha_tags unless current_user.present? %>
+
     <div class="form-action buffer-both">
       <%= f.submit t('links.saved'), class: 'button button-dark button-small' %>
       или

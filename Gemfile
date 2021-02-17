@@ -17,6 +17,9 @@ gem 'rails_12factor'
 
 gem 'rails-i18n'
 
+# Гем для добавления капчи https://github.com/ambethia/recaptcha
+gem 'recaptcha', require: 'recaptcha/rails'
+
 # Transpile app-like JavaScript. Read more: https://github.com/rails/webpacker
 gem 'webpacker', '~> 5.0'
 

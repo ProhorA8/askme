@@ -7,9 +7,11 @@ class QuestionsController < ApplicationController
 
   def create
     @question = Question.new(question_params)
-    @question.author = @current_user
 
-    if @question.save
+    # Проверяем капчу вместе с сохранением вопроса. Если в капче ошибка,
+    # она будет добавлена в массив @question.errors.
+    if check_captcha(@question) && @question.save
+
       redirect_to user_path(@question.user), notice: I18n.t('controllers.questions.asked')
     else
       render :edit
@@ -36,6 +38,10 @@ class QuestionsController < ApplicationController
 
   def authorize_user
     reject_user unless @question.user == current_user
+  end
+
+  def check_captcha(model)
+    current_user.present? || verify_recaptcha(model: model)
   end
 
   def load_question
